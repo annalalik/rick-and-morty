@@ -1,18 +1,27 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import FooterBar from "../FooterBar/FooterBar";
 import CharacterTile from "./CharacterTile";
 
-export default function CharacterList(props) {
+export default function CharactersList(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+  const [pagesNumber, setPagesNumber] = useState();
+  const [page, setPage] = useState(1);
+
+  const whichPageWasSelected = (e) => {
+    setPage(e.target.textContent);
+  };
 
   useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character/")
+    let queryParameter = props.queryParameter;
+    fetch(`https://rickandmortyapi.com/api/character/${queryParameter}`)
       .then((res) => res.json())
       .then(
         (result) => {
           setItems(result.results);
+          setPagesNumber(result.info.pages);
           setIsLoaded(true);
         },
         (error) => {
@@ -20,7 +29,7 @@ export default function CharacterList(props) {
           setError(error);
         }
       );
-  }, []);
+  }, [props]);
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -38,6 +47,11 @@ export default function CharacterList(props) {
             isFavourite={props.showIsFavourite(item)}
           />
         ))}
+        <FooterBar
+          pagesNumber={pagesNumber}
+          whichPageWasSelected={whichPageWasSelected}
+          setPageQueryParameter={props.setPageQueryParameter}
+        />
       </div>
     );
   }

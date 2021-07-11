@@ -1,25 +1,15 @@
 import './App.css';
 import { useState } from 'react';
-import CharacterList from './components/CharactersList/CharactersList';
+import CharactersList from './components/CharactersList/CharactersList';
 import FavouritesCharacterList from './components/CharactersList/FavouritesCharacterList';
 import TopBar from './components/TopBar/TopBar';
 
 function App() {
   const [favourites, setFavourites] = useState([]);
   const [isShownFavourites, setIsShownFavourites] = useState(false);
+  const [queryParameter, setQueryParameter] = useState('');
 
   const addToFavourites = (character) => {
-    // let alreadyInFavourites = false;
-    // favourites.forEach((favouriteItem) => {
-    //     if(character.id === favouriteItem.id){
-    //         alreadyInFavourites = true;
-    //     }
-    // })
-    // if(!alreadyInFavourites){
-    //     setFavourites((currentSelection) => [...currentSelection, character]);
-    // }
-
-    // using find()
     let alreadyInFavourites = favourites.find((item) => item.id === character.id);
 
     if(!alreadyInFavourites) {
@@ -27,7 +17,7 @@ function App() {
     }
   };
 
-  //   add removing
+  //   ToDo: add removing
   const removeFromFavourites = (character) => {
     let alreadyInFavourites = favourites.find((item) => item.id === character.id);
 
@@ -43,19 +33,34 @@ function App() {
   };
 
   const toggleFavourites = () => {
-    console.log('kliknieto');
     setIsShownFavourites(!isShownFavourites);
   };
 
+  const setSearchQueryParameter = (e) => {
+    let queryParameterForName = "?name=" + e.target.value;
+    console.log(e);
+    setQueryParameter(queryParameterForName);
+
+    console.log(queryParameterForName, 'query: ', queryParameter);
+  };
+
+  const setPageQueryParameter = (e) => {
+    let queryParameterForPage = "?page=" + e.target.innerText;
+    setQueryParameter(queryParameterForPage);
+  };
+
   return (
-    <div className="App bg-gray-900 box-border h-screen">
+    <div className="App bg-gray-900 box-border h-full">
       <TopBar
         showOnlyFavourites={toggleFavourites}
+        setSearchQueryParameter={setSearchQueryParameter}
       />
-      {!isShownFavourites && <CharacterList
+      {!isShownFavourites && <CharactersList
         addToFavourites={addToFavourites}
         removeFromFavourites={removeFromFavourites}
         showIsFavourite={showIsFavourite}
+        queryParameter={queryParameter}
+        setPageQueryParameter={setPageQueryParameter}
        />}
       {isShownFavourites && <FavouritesCharacterList 
         favourites={favourites}
