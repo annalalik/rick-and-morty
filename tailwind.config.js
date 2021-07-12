@@ -13,6 +13,7 @@ module.exports = {
       'medium': '13px',
       'large': '15px',
       'xlarge': 'x-large',
+      'xxxlarge': '100px'
     }
   },
   variants: {
