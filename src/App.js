@@ -44,8 +44,8 @@ function App() {
     console.log(queryParameterForName, 'query: ', queryParameter);
   };
 
-  const setPageQueryParameter = (e) => {
-    let queryParameterForPage = "?page=" + e.target.innerText;
+  const setPageQueryParameter = (currentPage) => {
+    let queryParameterForPage = "?page=" + (currentPage.selected + 1);
     setQueryParameter(queryParameterForPage);
   };
 

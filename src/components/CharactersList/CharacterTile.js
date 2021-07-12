@@ -13,7 +13,7 @@ export default function CharacterTile(props) {
         </div>
         <div className="text-left m-2">
           <div>
-            <h2 className="text-medium text-white">{props.item.name}</h2>
+            <h2 className="text-large text-white">{props.item.name}</h2>
             <p className="text-base text-white">
               {props.item.status} - {props.item.species}
             </p>

@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
+.pagination {
+  display: flex;
+}
+
+.pagination li {
+  margin: 10px;
+}
+
+.pagination .active {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 3px 12px;
+}
+
+.pagination .page {
+  
+}
+
+.pagination .previous {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 3px 12px;
+}
+
+.pagination .next {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 3px 12px;
+}
+
+.pagination .break a {
+  letter-spacing: 5px;
+}

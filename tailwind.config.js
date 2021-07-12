@@ -11,7 +11,7 @@ module.exports = {
       'base': '11px',
       'small': '9px',
       'medium': '13px',
-      'large': '15px',
+      'large': '17px',
       'xlarge': 'x-large',
       'xxxlarge': '100px'
     }
