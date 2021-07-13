@@ -1,33 +1,37 @@
-import './App.css';
-import { useState } from 'react';
-import CharactersList from './components/CharactersList/CharactersList';
-import FavouritesCharacterList from './components/CharactersList/FavouritesCharacterList';
-import TopBar from './components/TopBar/TopBar';
+import "./App.css";
+import { useState } from "react";
+import CharactersList from "./components/CharactersList/CharactersList";
+import FavouritesCharacterList from "./components/CharactersList/FavouritesCharacterList";
+import TopBar from "./components/TopBar/TopBar";
 
 function App() {
   const [favourites, setFavourites] = useState([]);
   const [isShownFavourites, setIsShownFavourites] = useState(false);
-  const [queryParameter, setQueryParameter] = useState('');
+  const [queryParameter, setQueryParameter] = useState("");
 
   const addToFavourites = (character) => {
-    let alreadyInFavourites = favourites.find((item) => item.id === character.id);
+    let alreadyInFavourites = favourites.find(
+      (item) => item.id === character.id
+    );
 
-    if(!alreadyInFavourites) {
-        setFavourites((currentSelection) => [...currentSelection, character]);
+    if (!alreadyInFavourites) {
+      setFavourites((currentSelection) => [...currentSelection, character]);
     }
   };
 
-  //   ToDo: add removing
   const removeFromFavourites = (character) => {
-    let alreadyInFavourites = favourites.find((item) => item.id === character.id);
+    let indexForRemove = favourites.indexOf(
+      favourites.find((item) => item.id === character.id)
+    );
 
-    if(!alreadyInFavourites) {
-        setFavourites((currentSelection) => [...currentSelection, character]);
-    }
+    console.log(indexForRemove);
+    favourites.splice(indexForRemove, 1);
   };
 
   const showIsFavourite = (character) => {
-    let alreadyInFavourites = favourites.find((item) => item.id === character.id);
+    let alreadyInFavourites = favourites.find(
+      (item) => item.id === character.id
+    );
 
     return !!alreadyInFavourites;
   };
@@ -41,7 +45,7 @@ function App() {
     console.log(e);
     setQueryParameter(queryParameterForName);
 
-    console.log(queryParameterForName, 'query: ', queryParameter);
+    console.log(queryParameterForName, "query: ", queryParameter);
   };
 
   const setPageQueryParameter = (currentPage) => {
@@ -50,7 +54,7 @@ function App() {
   };
 
   const checkIsFavouritesListEmpty = () => {
-    if(favourites.length === 0) {
+    if (favourites.length === 0) {
       return true;
     }
     return false;
@@ -62,18 +66,22 @@ function App() {
         showOnlyFavourites={toggleFavourites}
         setSearchQueryParameter={setSearchQueryParameter}
       />
-      {!isShownFavourites && <CharactersList
-        addToFavourites={addToFavourites}
-        removeFromFavourites={removeFromFavourites}
-        showIsFavourite={showIsFavourite}
-        queryParameter={queryParameter}
-        setPageQueryParameter={setPageQueryParameter}
-       />}
-      {isShownFavourites && <FavouritesCharacterList 
-        favourites={favourites}
-        isFavouritesListEmpty={checkIsFavouritesListEmpty()}
-        showIsFavourite={showIsFavourite}
-      />}
+      {!isShownFavourites && (
+        <CharactersList
+          addToFavourites={addToFavourites}
+          removeFromFavourites={removeFromFavourites}
+          showIsFavourite={showIsFavourite}
+          queryParameter={queryParameter}
+          setPageQueryParameter={setPageQueryParameter}
+        />
+      )}
+      {isShownFavourites && (
+        <FavouritesCharacterList
+          favourites={favourites}
+          isFavouritesListEmpty={checkIsFavouritesListEmpty()}
+          showIsFavourite={showIsFavourite}
+        />
+      )}
     </div>
   );
 }

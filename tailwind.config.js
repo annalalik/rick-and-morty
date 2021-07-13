@@ -8,8 +8,8 @@ module.exports = {
       }
     },
     fontSize: {
-      'base': '11px',
-      'small': '9px',
+      'base': '12px',
+      'small': '11px',
       'medium': '13px',
       'large': '17px',
       'xlarge': 'x-large',

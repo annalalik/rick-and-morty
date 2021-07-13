@@ -41,8 +41,8 @@
   display: flex;
 }
 
-.pagination li {
-  margin: 10px;
+.pagination .break {
+  margin: auto;
 }
 
 .pagination .active {
@@ -52,20 +52,23 @@
 }
 
 .pagination .page {
-  
+  margin: auto 10px;
 }
 
-.pagination .previous {
+.pagination .previous,
+.next {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 3px 25px;
+  text-transform: capitalize;
+}
+
+/* .pagination .next {
   font-size: 24px;
   font-weight: 700;
   margin: 3px 12px;
-}
-
-.pagination .next {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 3px 12px;
-}
+  text-transform: capitalize;
+} */
 
 .pagination .break a {
   letter-spacing: 5px;
