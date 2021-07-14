@@ -8,11 +8,6 @@ export default function CharactersList(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
   const [pagesNumber, setPagesNumber] = useState();
-  const [page, setPage] = useState(1);
-
-  const whichPageWasSelected = (e) => {
-    setPage(e.target.textContent);
-  };
 
   useEffect(() => {
     let queryParameter = props.queryParameter;
@@ -49,7 +44,6 @@ export default function CharactersList(props) {
         ))}
         <FooterBar
           pagesNumber={pagesNumber}
-          whichPageWasSelected={whichPageWasSelected}
           setPageQueryParameter={props.setPageQueryParameter}
         />
       </div>

@@ -20,12 +20,11 @@ function App() {
   };
 
   const removeFromFavourites = (character) => {
-    let indexForRemove = favourites.indexOf(
-      favourites.find((item) => item.id === character.id)
-    );
+    let newFavouriteArray = favourites.filter((item) => {
+      return item.id !== character.id;
+    })
 
-    console.log(indexForRemove);
-    favourites.splice(indexForRemove, 1);
+    setFavourites(newFavouriteArray);
   };
 
   const showIsFavourite = (character) => {
@@ -42,10 +41,7 @@ function App() {
 
   const setSearchQueryParameter = (e) => {
     let queryParameterForName = "?name=" + e.target.value;
-    console.log(e);
     setQueryParameter(queryParameterForName);
-
-    console.log(queryParameterForName, "query: ", queryParameter);
   };
 
   const setPageQueryParameter = (currentPage) => {
@@ -61,7 +57,7 @@ function App() {
   };
 
   return (
-    <div className="App bg-gray-900 box-border h-full">
+    <div className="App bg-gray-900 box-border min-h-screen">
       <TopBar
         showOnlyFavourites={toggleFavourites}
         setSearchQueryParameter={setSearchQueryParameter}

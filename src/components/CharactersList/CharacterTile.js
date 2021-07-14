@@ -34,7 +34,8 @@ export default function CharacterTile(props) {
           </div>
         </div>
         <button
-          className="relative text-small text-white w-11/12 h-1/5 m-auto border"
+          className={"relative text-small w-11/12 h-1/5 m-auto mb-2 border " +
+          (props.isFavourite ? "hidden" : "text-white")}
           onClick={() => props.addToFavourites(props.item)}
         >
           Add to Favourites

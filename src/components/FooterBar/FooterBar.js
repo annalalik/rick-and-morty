@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 
 export default function FooterBar(props) {
   return (
-    <div className="container w-1/2 sm:w-4/5 mx-auto pt-2 pb-2 flex flex-wrap flex-col sm:flex-row sm:flex-nowrap justify-center text-white">
+    <div className="container sm:w-full mx-auto pt-2 pb-2 flex flex-wrap flex-col sm:flex-row sm:flex-nowrap justify-center text-white">
       <ReactPaginate
         previousLabel={"prev"}
         nextLabel={"next"}
@@ -12,7 +12,7 @@ export default function FooterBar(props) {
         pageCount={props.pagesNumber}
         initialPage={0}
         marginPagesDisplayed={3}
-        pageRangeDisplayed={2}
+        pageRangeDisplayed={1}
         onPageChange={props.setPageQueryParameter}
         containerClassName={"pagination"}
         activeClassName={"active"}
