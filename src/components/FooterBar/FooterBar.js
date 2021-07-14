@@ -1,8 +1,9 @@
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from "react-paginate";
 
 export default function FooterBar(props) {
+  if (!props.pagesNumber) {
+    return null;
+  }
   return (
     <div className="container sm:w-full mx-auto pt-2 pb-2 flex flex-wrap flex-col sm:flex-row sm:flex-nowrap justify-center text-white">
       <ReactPaginate

@@ -93,3 +93,12 @@
     letter-spacing: 2px;
   }
 }
+
+.overflowWithScrollFunctionality::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.overflowWithScrollFunctionality {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

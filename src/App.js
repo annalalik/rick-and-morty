@@ -49,13 +49,6 @@ function App() {
     setQueryParameter(queryParameterForPage);
   };
 
-  const checkIsFavouritesListEmpty = () => {
-    if (favourites.length === 0) {
-      return true;
-    }
-    return false;
-  };
-
   return (
     <div className="App bg-gray-900 box-border min-h-screen">
       <TopBar
@@ -74,7 +67,6 @@ function App() {
       {isShownFavourites && (
         <FavouritesCharacterList
           favourites={favourites}
-          isFavouritesListEmpty={checkIsFavouritesListEmpty()}
           showIsFavourite={showIsFavourite}
         />
       )}
